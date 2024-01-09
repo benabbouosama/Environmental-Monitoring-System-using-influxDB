@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    networks:
+      - influxdb_network
+
+  iot:
+    build: .
+    depends_on:
+      - influxdb
+    volumes:
+      - ./env_file:/app/.env
+    networks:
+      - influxdb_network
+
+volumes:
+  influxdb_data:
+
+
+networks:
+  influxdb_network:
+    driver: bridge

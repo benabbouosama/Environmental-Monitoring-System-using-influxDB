@@ -1,0 +1,4 @@
+ORG=[name of your organization]
+URL=http://influxdb:8086
+TOKEN=[Add_your_TOKEN_here]
+BUCKET=[Name of your bucket]
